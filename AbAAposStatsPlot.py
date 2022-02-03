@@ -31,7 +31,7 @@ plt.ylabel("% Aa frequency")
 plt.show() 
 
 """
-The input.txt file must be in the same directory as AbAAposStatsPlot.py and contain
+The input.txt file must be in the same directory as AbAAposStatsPlot.py and contain tab-delimited
 input data taken from one of the .csv files outputed by AbAAposStats.py and formatted as follows:
 (Make sure the first column has the IUPAC residue codes, except for d, which stands for dash (-)
 in the original a seq alignement proccessed by AbAAposStats.py)
