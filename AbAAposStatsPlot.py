@@ -32,7 +32,7 @@ plt.show()
 
 """
 The input.txt file must be in the same directory as AbAAposStatsPlot.py and contain
-imput data taken from one of the .csv files outputed by AbAAposStats.py  and formatted as follows:
+input data taken from one of the .csv files outputed by AbAAposStats.py and formatted as follows:
 (Make sure the first column has the IUPAC residue codes, except for d, which stands for dash (-)
 in the original a seq alignement proccessed by AbAAposStats.py)
 Aa	f39	f40	f41	f42	f43	f44	f45	f46	f47	f48	f49	f50	f51	f52	f53	f54	f55
