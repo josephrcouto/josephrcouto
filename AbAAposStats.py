@@ -1,6 +1,6 @@
 """
 Writen by joe.couto@abaeternum.com last revision 2FEB2022
-Start the program from a Anaconda command prompt: python AbAAposStats.py
+Start the program from an Anaconda command prompt: python AbAAposStats.py
 INPUT: a text file containing a multiple sequence alignment of antibody
 variable regions.
 OUTPUT: two .csv files with aminoacid frequency data at each framework and cdr position (roughly imgt);
