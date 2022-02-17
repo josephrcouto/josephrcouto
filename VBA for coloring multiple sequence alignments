@@ -1,0 +1,418 @@
+' The advantage of using this code over those of most softwares is that you get a microsoft-word
+' file, which is fully editable, as opposed to an image. In the VIEW - MACROS tab of an MS-Word
+' document create a new macro and paste this VBA code into it. Name and save the new macro.
+' Paste your alignment, and run the macro.  This will set the page to horizontal, the font to
+' Courier New 8 - accommodating 316 characters per line - and unique highlighting and letter
+' color combinations for the standard 20 Aas. Optionally, you may select entire lines to set the
+' highlighting to NO COLOR and the font to BLACK.  To do the same for vertical columns you just
+' have to select them with the mouse while pressing the Alt key.  See an example in my page 
+' https://abaeternum.com/ under Tools - Python and VBA scripts
+
+Sub AaColoring()
+    If Selection.PageSetup.Orientation = wdOrientPortrait Then
+        Selection.PageSetup.Orientation = wdOrientLandscape
+    Else
+        Selection.PageSetup.Orientation = wdOrientLandscape
+    End If
+    With ActiveDocument.PageSetup
+        .LineNumbering.Active = False
+        .Orientation = wdOrientLandscape
+        .TopMargin = InchesToPoints(0.5)
+        .BottomMargin = InchesToPoints(0.5)
+        .LeftMargin = InchesToPoints(0.5)
+        .RightMargin = InchesToPoints(0.5)
+        .Gutter = InchesToPoints(0)
+        .HeaderDistance = InchesToPoints(0.5)
+        .FooterDistance = InchesToPoints(0.5)
+        .PageWidth = InchesToPoints(22)
+        .PageHeight = InchesToPoints(8.5)
+        .FirstPageTray = wdPrinterDefaultBin
+        .OtherPagesTray = wdPrinterDefaultBin
+        .SectionStart = wdSectionNewPage
+        .OddAndEvenPagesHeaderFooter = False
+        .DifferentFirstPageHeaderFooter = False
+        .VerticalAlignment = wdAlignVerticalTop
+        .SuppressEndnotes = False
+        .MirrorMargins = False
+        .TwoPagesOnOne = False
+        .BookFoldPrinting = False
+        .BookFoldRevPrinting = False
+        .BookFoldPrintingSheets = 1
+        .GutterPos = wdGutterPosLeft
+    End With
+    
+    
+    ' CLEAR ALL HIGHLIGHTING
+    Dim StoryRange As Range
+    For Each StoryRange In ActiveDocument.StoryRanges
+    StoryRange.HighlightColorIndex = wdNoHighlight
+    Next StoryRange
+      
+    
+    ' RESET FONT TO COURIER NEW SIZE 8 BLACK
+    Selection.WholeStory
+    Selection.Style = ActiveDocument.Styles("No Spacing")
+    Selection.Font.Name = "Courier New"
+    Selection.Font.Size = 8
+    Selection.Font.Color = vbBlack
+   
+    
+    ' R K H
+    Options.DefaultHighlightColorIndex = wdBrightGreen
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+        With Selection.Find
+        .Text = "R"
+        .Replacement.Text = "R"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdBrightGreen
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbRed
+    With Selection.Find
+        .Text = "K"
+        .Replacement.Text = "K"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Options.DefaultHighlightColorIndex = wdGreen
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "H"
+        .Replacement.Text = "H"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    
+    
+    ' D E
+    Options.DefaultHighlightColorIndex = wdRed
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+        With Selection.Find
+        .Text = "D"
+        .Replacement.Text = "D"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdRed
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "E"
+        .Replacement.Text = "E"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    
+    ' N Q
+    Options.DefaultHighlightColorIndex = wdTurquoise
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbRed
+        With Selection.Find
+        .Text = "N"
+        .Replacement.Text = "N"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdTurquoise
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+    With Selection.Find
+        .Text = "Q"
+        .Replacement.Text = "Q"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    ' S T
+    Options.DefaultHighlightColorIndex = wdViolet
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = RGB(245, 197, 66)
+        With Selection.Find
+        .Text = "S"
+        .Replacement.Text = "S"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdViolet
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "T"
+        .Replacement.Text = "T"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+
+    
+    ' G P
+    Options.DefaultHighlightColorIndex = wdNoHighlight
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+        With Selection.Find
+        .Text = "G"
+        .Replacement.Text = "G"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdTeal
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "P"
+        .Replacement.Text = "P"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    
+    
+    ' Y W F
+    Options.DefaultHighlightColorIndex = wdPink
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+        With Selection.Find
+        .Text = "Y"
+        .Replacement.Text = "Y"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+     
+    Options.DefaultHighlightColorIndex = wdBlack
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "W"
+        .Replacement.Text = "W"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Options.DefaultHighlightColorIndex = wdDarkBlue
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "F"
+        .Replacement.Text = "F"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    
+    ' M C
+    Options.DefaultHighlightColorIndex = wdYellow
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbRed
+    With Selection.Find
+        .Text = "M"
+        .Replacement.Text = "M"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Options.DefaultHighlightColorIndex = wdYellow
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+    With Selection.Find
+        .Text = "C"
+        .Replacement.Text = "C"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    
+    
+    ' A L V I
+    Options.DefaultHighlightColorIndex = wdBlue
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = RGB(245, 197, 66)
+    With Selection.Find
+        .Text = "A"
+        .Replacement.Text = "A"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Options.DefaultHighlightColorIndex = wdGray50
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbBlack
+    With Selection.Find
+        .Text = "L"
+        .Replacement.Text = "L"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+        
+    Options.DefaultHighlightColorIndex = wdDarkYellow
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "V"
+        .Replacement.Text = "V"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Options.DefaultHighlightColorIndex = wdGray50
+    Selection.Find.Replacement.Highlight = True
+    Selection.Find.Replacement.Font.Color = vbWhite
+    With Selection.Find
+        .Text = "I"
+        .Replacement.Text = "I"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+End Sub
+
